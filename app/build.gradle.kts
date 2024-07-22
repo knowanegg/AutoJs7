@@ -471,25 +471,26 @@ android {
         targetCompatibility = versions.javaVersion
     }
 
-    // @Legacy packagingOptions { ... }
-    packaging {
-        arrayOf(
-            "META-INF/DEPENDENCIES",
-            "META-INF/LICENSE",
-            "META-INF/LICENSE.*",
-            "META-INF/LICENSE-notice.*",
-            "META-INF/license.*",
-            "META-INF/NOTICE",
-            "META-INF/NOTICE.*",
-            "META-INF/notice.*",
-            "META-INF/ASL2.0",
-            "META-INF/*.kotlin_module",
-            "lib/x86/libc++_shared.so",
-            "lib/x86_64/libc++_shared.so",
-            "lib/armeabi-v7a/libc++_shared.so",
-            "lib/arm64-v8a/libc++_shared.so",
-            "lib/armeabi/libc++_shared.so",
-        ).let { resources.pickFirsts.addAll(it) }
+    packagingOptions {
+        resources {
+            pickFirsts.addAll(listOf(
+                "META-INF/DEPENDENCIES",
+                "META-INF/LICENSE",
+                "META-INF/LICENSE.*",
+                "META-INF/LICENSE-notice.*",
+                "META-INF/license.*",
+                "META-INF/NOTICE",
+                "META-INF/NOTICE.*",
+                "META-INF/notice.*",
+                "META-INF/ASL2.0",
+                "META-INF/*.kotlin_module",
+                "lib/x86/libc++_shared.so",
+                "lib/x86_64/libc++_shared.so",
+                "lib/armeabi-v7a/libc++_shared.so",
+                "lib/arm64-v8a/libc++_shared.so",
+                "lib/armeabi/libc++_shared.so"
+            ))
+        }
 
         jniLibs {
             useLegacyPackaging = true
